@@ -31,17 +31,11 @@ router.get('/:term', rejectUnauthenticated, (req, res) => {
  * POST route template
  */
 router.post('/', rejectUnauthenticated, (req, res) => {
-  // console.log('in router POST', req.body, req.user)
   let name_title = req.body.title;
   let breakup = name_title.split(' - ');
   let artist_name = breakup[0];
   let title = breakup[1];
-  // let genre = req.body.genre;
 
-  // console.log(genre.toString());
-  // console.log('test: ', artist_name);
-  // console.log('test2: ', title)
-  // console.log(name_title);
   const query = `INSERT INTO "album" (user_id, title, published_date, record_label, album_art, country, genre, barcode, discogs_id, artist_name) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`;
   pool.query(query, [req.user.id, title, req.body.year, req.body.label[0], req.body.cover_image, req.body.country, req.body.genre.toString(), req.body.barcode, req.body.id, artist_name])
     .then(result => {
@@ -78,10 +72,6 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     queryParams.push(req.body.condition);
     conditionString = `condition = $${count},`;
     count++;
-    // } else if (req.body.condition.length) {
-    //   queryParams.push(req.body.condition);
-    //   conditionString = `condition = $${1}`;
-    //   count++;
   }
   if (req.body.description.length) {
     queryParams.push(req.body.description);

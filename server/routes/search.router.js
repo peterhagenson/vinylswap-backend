@@ -22,14 +22,6 @@ router.get('/:searchTerm', (req, res) => {
     //TODO get user info 
     console.log('search query result', result.rows);
 
-    // let searchResults = [];
-    // for (result of result.rows) {
-    //   if (result.title.includes(req.params.searchTerm)) {
-    //     // console.log(result);
-    //     searchResults.push(result)
-    //   }
-    // }
-    // console.log(searchResults);
     res.send(result.rows);
     searchResults = [];
   }).catch(err => {

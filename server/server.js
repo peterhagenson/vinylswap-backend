@@ -20,71 +20,9 @@ const albumToAddRouter = require('./routes/albumToAdd.router');
 const threadsRouter = require('./routes/threads.router');
 const messagesRouter = require('./routes/messages.router.js');
 
-// var AWS = require("aws-sdk");
-
-// AWS.config.getCredentials(function (err) {
-//   if (err) console.log(err.stack);
-//   // credentials not loaded
-//   else {
-//     console.log("Access key:", AWS.config.credentials.accessKeyId);
-//   }
-// });
-
-// var AWS = require("aws-sdk");
-
-// console.log("Region: ", AWS.config.region);
-
-// socket.io
-// const express = require('express');
-// const app = express();
-// const http = require("http");
-// const { Server } = require("socket.io");
+console.log(process.env.DISCOGS_CONSUMER_KEY, process.env.DISCOGS_CONSUMER_SECRET)
 const cors = require("cors")
-app.use(cors());
-
-// const server = http.createServer(app)
-
-// const io = new Server(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     methods: ["GET", "POST"],
-//   },
-// });
-
-
-// io.on("connection", (socket) => {
-//   console.log(`User Connected: ${socket.id}`)
-
-
-
-
-//   socket.on("join_room", (data) => {
-//     //data is the room id
-//     console.log("room", data)
-//     socket.join(data);
-//   })
-
-//   socket.on("send_message", (data) => {
-//     console.log('this is the data', data);
-//     console.log(data.room, data.details.user_id, data.details.id, data.message)
-
-
-//     query = `INSERT INTO "thread" (code, recipient_user_id, album_id, message)
-//     VALUES ('$1', '$2', '$3', '$4');`;
-//     pool.query(query, [data.room, data.details.user_id, data.details.id, data.message])
-//       .then(response => {
-//         console.log(response);
-//       })
-//     // should be able to send this data to db
-
-
-//     socket.to(data.room).emit("receive_message", data)
-//   })
-// })
-
-//----------------------------------------
-
-
+app.use(cors()); 
 
 // Body parser middleware
 app.use(bodyParser.json());
